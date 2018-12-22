@@ -3,6 +3,7 @@ package GUI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -13,18 +14,25 @@ import javafx.stage.Stage;
 public class ClickMe extends Application{
 
     Button btn;
+    Label lbl;
+    int clickCount;
 
+    @Override
     public void start(Stage primaryStage) {
 
         // Create the button
-        btn = new Button();
-        btn.setText("Click me please!");
+        btn = new Button("Click me please!");
         btn.setOnAction(e -> buttonClick());
 
-        // Add the button to the layout pane
+        // Create the Label
+        lbl = new Label("You have not clicked the button");
+
+        // Add the label and the button to the layout pane
         BorderPane pane = new BorderPane();
+        pane.setTop(lbl);
         pane.setCenter(btn);
-        // Add the layout to a scene
+
+        // Add the layout pane to a scene
         Scene scene = new Scene(pane, 300, 250);
 
         // Finalize and show the stage
@@ -34,10 +42,16 @@ public class ClickMe extends Application{
     }
 
     public void buttonClick(){
-        if(btn.getText() == "Click me please!")
-            btn.setText("You clicked me!");
-        else
-            btn.setText("Click me please!");
+        clickCount++;
+
+        if(clickCount == 1)
+            lbl.setText("You have clicked once");
+        else lbl.setText("You have clicked " + clickCount + " times.");
+
+//        if(btn.getText() == "Click me please!")
+//            btn.setText("You clicked me!");
+//        else
+//            btn.setText("Click me please!");
     }
 
 
