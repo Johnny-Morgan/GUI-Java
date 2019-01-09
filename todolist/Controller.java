@@ -11,6 +11,7 @@ import todolist.datamodel.TodoItem;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,8 @@ public class Controller {
                 if(newValue != null){
                     TodoItem item = todoListView.getSelectionModel().getSelectedItem();
                     itemDetailsTextArea.setText(item.getDetails());
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+                    deadlineLabel.setText(dtf.format(item.getDeadline()));
                 }
             }
         });
@@ -57,6 +60,7 @@ public class Controller {
         todoListView.getItems().setAll(todoItems);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
+
     }
 
     @FXML
