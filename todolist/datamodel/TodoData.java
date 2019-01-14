@@ -24,7 +24,7 @@ public class TodoData {
     private List<TodoItem> todoItems;
     private DateTimeFormatter formatter;
 
-    private static TodoData getInstance(){
+    public static TodoData getInstance(){
         return instance;
     }
 
@@ -36,9 +36,9 @@ public class TodoData {
         return todoItems;
     }
 
-    public void setTodoItems(List<TodoItem> todoItems) {
-        this.todoItems = todoItems;
-    }
+//    public void setTodoItems(List<TodoItem> todoItems) {
+//        this.todoItems = todoItems;
+//    }
 
     public void loadTodoItems()throws IOException{
         todoItems = FXCollections.observableArrayList();
