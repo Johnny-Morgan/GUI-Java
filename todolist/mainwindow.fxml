@@ -39,7 +39,6 @@
                             </ImageView>
                         </graphic>
                     </Button>
-
                 </HBox>
             </ToolBar>
         </VBox>
